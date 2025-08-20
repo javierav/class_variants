@@ -6,6 +6,10 @@ module ClassVariants
       def class_variants(...)
         ClassVariants::Instance.new(...)
       end
+
+      def cv(name, ...)
+        ClassVariants.for(name).render(...)
+      end
     end
   end
 end
