@@ -2,6 +2,8 @@
 
 We ❤️ Tailwind CSS but sometimes it's difficult to manage the state of some elements using conditionals. `class_variants` is a tiny helper that should enable you to create, configure, and apply different variants of elements as classes.
 
+![](./logo.png)
+
 Inspired by [variant-classnames](https://github.com/mattvalleycodes/variant-classnames) ✌️
 
 ## Quicklinks
@@ -78,6 +80,8 @@ button_classes.render(color: :blue, size: :sm)
 button_classes.render
 button_classes.render(color: :red, size: :xl, icon: true)
 ```
+
+> **Note**: `slot` and `class` are reserved words and cannot be used as variants keys! Continue reading for usage.
 
 ## Compound Variants
 
@@ -175,10 +179,10 @@ end
 
 ```erb
 <div>
-  <div class="<%= alert_classes.render(:head) %>">
+  <div class="<%= alert_classes.render(slot: :head) %>">
     Head of alert
   </div>
-  <div class="<%= alert_classes.render(:body) %>">
+  <div class="<%= alert_classes.render(slot: :body) %>">
     Body of alert
   </div>
 </div>
@@ -260,19 +264,19 @@ alert_classes.render
 alert_classes.render(color: :red)
 
 # render slot with defaults variants
-alert_classes.render(:body)
+alert_classes.render(slot: :body)
 
 # render slot with custom variants
-alert_classes.render(:body, color: :red)
+alert_classes.render(slot: :body, color: :red)
 
-# if slot not exist, throw error? return empty classes?
-alert_classes.render(:non_existent_slot, color: :red)
+# if slot not exist, return empty classes
+alert_classes.render(slot: :non_existent_slot, color: :red)
 
 # render default slot with custom class (will be merged)
 alert_classes.render(class: "...")
 
 # render slot with custom class (will be merged)
-alert_classes.render(:body, class: "...")
+alert_classes.render(slot: :body, class: "...")
 ```
 
 ## Use with Rails
@@ -372,7 +376,8 @@ end
 ## Other packages
 
 - [`active_storage-blurhash`](https://github.com/avo-hq/active_storage-blurhash) - A plug-n-play [blurhash](https://blurha.sh/) integration for images stored in ActiveStorage
-- [`avo`](https://github.com/avo-hq/avo) - Build Content management systems with Ruby on Rails
+- [`avo`](https://github.com/avo-hq/avo) - Build internal tools, admin panels, and dashboards with Ruby on Rails
+- [`marksmith`](https://github.com/avo-hq/marksmith) - GitHub-style markdown editor for Ruby and Rails
 - [`prop_initializer`](https://github.com/avo-hq/prop_initializer) - A flexible tool for defining properties on Ruby classes.
 - [`stimulus-confetti`](https://github.com/avo-hq/stimulus-confetti) - The easiest way to add confetti to your StimulusJS app
 
@@ -380,7 +385,7 @@ end
 
 If you enjoyed this gem try out [Avo](https://github.com/avo-hq/avo). It helps developers build Internal Tools, Admin Panels, CMSes, CRMs, and any other type of Business Apps 10x faster on top of Ruby on Rails.
 
-[![](./logo-on-white.png)](https://github.com/avo-hq/avo)
+[![](./avo-logo.png)](https://github.com/avo-hq/avo)
 
 ## Articles
 
